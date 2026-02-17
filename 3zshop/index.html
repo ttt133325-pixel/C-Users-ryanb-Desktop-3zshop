@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Respect Server | ريسبكت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Cairo", sans-serif;
+        background-color: #0d0b21;
+        color: white;
+        overflow-x: hidden;
+      }
+      .bg-gradient-custom {
+        background: radial-gradient(circle at top, #2d1b4d 0%, #0d0b21 100%);
+      }
+      .nav-glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .card-dark {
+        background: rgba(15, 15, 35, 0.85);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+      }
+      .active-tab {
+        background-color: #7c3aed !important;
+        color: white !important;
+      }
+      .page-section {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+      .page-section.active {
+        display: flex;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .rule-item {
+        margin-bottom: 12px;
+      }
+      .rule-header {
+        cursor: pointer;
+        background: rgba(124, 58, 237, 0.1);
+        transition: 0.3s;
+        border-right: 4px solid #7c3aed;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+      }
+      .rule-header:hover {
+        background: rgba(124, 58, 237, 0.2);
+      }
+      .rule-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 0 0 8px 8px;
+      }
+      .rule-item.open .rule-content {
+        max-height: 3000px;
+        padding: 20px;
+        border: 1px solid rgba(124, 58, 237, 0.1);
+        border-top: none;
+      }
+      .staff-card {
+        transition: 0.3s;
+        border: 1px solid rgba(124, 58, 237, 0.2);
+      }
+      .staff-card:hover {
+        transform: translateY(-10px);
+        border-color: #7c3aed;
+        box-shadow: 0 10px 30px -10px #7c3aed;
+      }
+    </style>
+  </head>
+  <body class="bg-gradient-custom min-h-screen">
+    <nav
+      class="nav-glass fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] max-w-5xl rounded-2xl z-50 p-3 px-6 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-2">
+        <img
+          src="https://i.ibb.co/m5pXzYfL/9BC399-C9-31-C3-42-5-E-AEA8-057-BD7-CA618-F.webp"
+          class="w-10 h-10 rounded-full border border-purple-500"
+          alt="Respect Logo"
+        />
+        <span class="font-bold text-xl tracking-wider">Respect</span>
+      </div>
+      <div class="hidden md:flex gap-4 text-sm font-semibold">
+        <button
+          onclick="showPage('home', this)"
+          class="nav-btn px-4 py-2 active-tab rounded-lg"
+        >
+          الرئيسية
+        </button>
+        <button
+          onclick="showPage('rules', this)"
+          class="nav-btn px-4 py-2 hover:bg-white/5 rounded-lg"
+        >
+          القوانين
+        </button>
+        <button
+          onclick="showPage('jobs', this)"
+          class="nav-btn px-4 py-2 hover:bg-white/5 rounded-lg"
+        >
+          التقديمات
+        </button>
+        <button
+          onclick="showPage('staff', this)"
+          class="nav-btn px-4 py-2 hover:bg-white/5 rounded-lg"
+        >
+          المؤسسين
+        </button>
+        <button
+          onclick="showPage('apply', this)"
+          class="nav-btn px-4 py-2 border border-purple-500/50 rounded-lg text-purple-400"
+        >
+          التفعيل
+        </button>
+      </div>
+    </nav>
+
+    <section
+      id="home"
+      class="page-section active pt-32 flex-col items-center text-center px-4"
+    >
+      <div class="relative mb-6">
+        <img
+          src="https://i.ibb.co/m5pXzYfL/9BC399-C9-31-C3-42-5-E-AEA8-057-BD7-CA618-F.webp"
+          class="w-48 h-48 rounded-full border-4 border-purple-600 relative z-10 shadow-2xl"
+          alt="Respect Logo"
+        />
+      </div>
+      <h1 class="text-6xl font-black mb-4 italic">Respect Server</h1>
+      <p class="max-w-2xl text-gray-300 leading-relaxed text-lg mb-8">
+        سيرفر ريسبكت للحياة الواقعية، حيث نصنع المتعة والاحترافية. الاحترام هو
+        شعارنا.
+      </p>
+      <a
+        href="https://discord.gg/GCEJNzqR"
+        target="_blank"
+        class="flex items-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] px-12 py-4 rounded-xl font-bold text-xl transition-all hover:scale-105 shadow-xl"
+      >
+        <span>دخول سيرفر الديسكورد</span>
+      </a>
+    </section>
+
+    <section
+      id="rules"
+      class="page-section pt-32 flex-col items-center px-4 pb-20"
+    >
+      <h2 class="text-4xl font-bold mb-10 text-purple-400">دستور السيرفر</h2>
+      <div class="w-full max-w-4xl space-y-4 text-right">
+        <div class="rule-item">
+          <div class="rule-header" onclick="toggleRule(this)">
+            قوانين الحياة الجديدة - NLR <span>▼</span>
+          </div>
+          <div class="rule-content text-gray-300 text-sm leading-relaxed">
+            في حال اغمائك بشكل كامل لا يمكنك الكلام او الحركة او فعل أي شيء في
+            حال تم اسقاطك من قبل شخص و تم انعاشك من قبل مسعفين تستطيع تذكر جميع
+            الاحداث في حال تم اعطائك ابرة "في العيادة الخاصة" من احد اللاعبين
+            اللذين لديهم عداوة معك لا تستطيع تذكر أي شي حصل لك ( منها العداوات
+            او الاحداث ).
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-header" onclick="toggleRule(this)">
+            الباور جيمنج - PowerGaming <span>▼</span>
+          </div>
+          <div class="rule-content text-gray-300 text-sm leading-relaxed">
+            استخدام الوسائل غير موجودة في اللعبة للحصول على ميزة أو عدم التوافق
+            مع العالم بطريقة معقولة وبشكل واقعي ومنها التالي وهناك الكثير من
+            المواقف والامثلة التي تندرج تحت Powergaming.
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-header" onclick="toggleRule(this)">
+            الخوف على الحياة - NVL <span>▼</span>
+          </div>
+          <div class="rule-content text-gray-300 text-sm leading-relaxed">
+            عدم الخوف بشكل واقعي على حياتك عندما تتعرض للتهديد بالأسلحة أو بأذى
+            شديد من وسائل أخرى يعتبر الخوف على الحياة شي اساسي ومهم جدا مثال :
+            اذا كان هناك اداة تعرض حياتك للخطر.
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-header" onclick="toggleRule(this)">
+            الميتا جيمنج والقتل العشوائي <span>▼</span>
+          </div>
+          <div class="rule-content text-gray-300 text-sm space-y-3">
+            <p>
+              <strong>الميتا جيمنج - Metagaming:</strong> اي معلومة تحصل عليها
+              من خارج المدينة مثال معلومة حصلت عليها من بث او دسكورد او مقطع
+              باليوتيوب كلها تعتبر مخالفة.
+            </p>
+            <p>
+              <strong>القتل العشوائي - RDM:</strong> قتل الأشخاص دون سبب, تهديد,
+              بصورة عشوائية او بدون عداوة يعتبر القتل العشوائي ممنوع ومخالف
+              للنظام العام للسيرفر.
+            </p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-header" onclick="toggleRule(this)">
+            📌 القوانين العامة والشروط <span>▼</span>
+          </div>
+          <div class="rule-content text-gray-300 text-sm space-y-2">
+            <p>• العمر المسموح لدخول السيرفر: 13 سنة فما فوق.</p>
+            <p>
+              • يمنع القذف، الشتم، الطائفية، السياسة، الدين، أو القبلية
+              (العقوبة: باند نهائي).
+            </p>
+            <p>
+              • يمنع مشاركة أي من حساباتك أو معلوماتك الشخصية (سناب، إنستا...)
+              العقوبة: باند نهائي.
+            </p>
+          </div>
+        </div>
+
+        <div class="rule-item">
+          <div class="rule-header" onclick="toggleRule(this)">
+            ⚠️ نظام الوورنات (التحذيرات) <span>▼</span>
+          </div>
+          <div
+            class="rule-content text-gray-300 text-sm grid grid-cols-2 gap-2"
+          >
+            <p>2 وارن: باند 12 ساعة</p>
+            <p>4 وارن: باند 24 ساعة</p>
+            <p>6 وارن: باند 3 أيام</p>
+            <p>8 وارن: باند 7 أيام</p>
+            <p>15 وارن: باند ثلاثة أشهر او نهائي</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="staff"
+      class="page-section pt-32 flex-col items-center px-4 pb-20"
+    >
+      <h2 class="text-4xl font-bold mb-12">طاقم الإدارة العليا</h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl text-center"
+      >
+        <div class="staff-card card-dark p-8 rounded-3xl">
+          <div
+            class="w-20 h-20 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-black shadow-[0_0_15px_#7c3aed]"
+          >
+            R
+          </div>
+          <h3 class="text-2xl font-bold">ريان</h3>
+          <p class="text-purple-400 font-bold mb-2">Owner</p>
+          <p class="text-gray-400 text-xs leading-relaxed">
+            مسؤول الماب وشؤون السيرفر العامة
+          </p>
+        </div>
+        <div class="staff-card card-dark p-8 rounded-3xl">
+          <div
+            class="w-20 h-20 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-black shadow-[0_0_15px_#7c3aed]"
+          >
+            F
+          </div>
+          <h3 class="text-2xl font-bold">فابيو</h3>
+          <p class="text-purple-400 font-bold mb-2">Co-Owner</p>
+          <p class="text-gray-400 text-xs leading-relaxed">
+            نائب الأونر ونائب مسؤول السيرفر
+          </p>
+        </div>
+        <div class="staff-card card-dark p-8 rounded-3xl">
+          <div
+            class="w-20 h-20 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-black shadow-[0_0_15px_#7c3aed]"
+          >
+            M
+          </div>
+          <h3 class="text-2xl font-bold">محمد القحطاني</h3>
+          <p class="text-purple-400 font-bold mb-2">Developer</p>
+          <p class="text-gray-400 text-xs leading-relaxed">
+            مبرمج الموقع والديسكورد
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- صفحة التقديمات -->
+<section id="jobs" class="page-section pt-32 flex-col items-center px-4">
+  <h2 class="text-4xl font-bold mb-10">بوابة التقديمات</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
+    <div class="card-dark p-6 rounded-2xl flex flex-col items-center">
+      <span>جهاز الشرطة</span>
+      <button
+        class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded text-white"
+        onclick="showPoliceForm()"
+      >تقديم الآن</button>
+    </div>
+
+        <div class="card-dark p-6 rounded-2xl flex flex-col items-center">
+      <span>جهاز صحه</span>
+      <span class="text-red-500 border border-red-500 px-3 py-1 rounded text-xs font-bold">مقفل</span>
+    </div>
+</section>
+
+<!-- نموذج تقديم الشرطة -->
+<section id="police-apply" class="page-section pt-32 flex-col items-center px-4">
+  <div class="card-dark w-full max-w-2xl p-8 rounded-3xl shadow-2xl mb-20 border-t-4 border-purple-600">
+    <h2 class="text-3xl font-bold mb-4 text-center text-purple-400">تقديم جهاز الشرطة</h2>
+    <p class="text-center text-gray-500 mb-8 text-sm">يرجى الإجابة بوضوح على جميع الأسئلة.</p>
+    <form id="policeForm" class="space-y-4">
+      <div class="space-y-2 text-right">
+        <label class="text-xs text-gray-400">اكتب ايدي حسابك (Discord ID) *</label>
+        <input type="text" id="police_discord_id" required class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all">
+      </div>
+      <div class="space-y-2 text-right">
+        <label class="text-xs text-gray-400">اكتب اسمك الكامل *</label>
+        <input type="text" id="police_name" required class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all">
+      </div>
+      <div class="space-y-2 text-right">
+        <label class="text-xs text-gray-400">كم سنة خبرتك في الحياة الواقعية؟ *</label>
+        <input type="text" id="police_experience" required class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all">
+      </div>
+      <div class="space-y-2 text-right">
+        <label class="text-xs text-gray-400">ماهي أهم 3 صفات يجب أن تتوفر في ضابط الشرطة؟ *</label>
+        <input type="text" id="police_traits" required class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all">
+      </div>
+      <div class="space-y-2 text-right">
+        <label class="text-xs text-gray-400">إذا رأيت شخصاً مخالفاً للقانون، ماذا ستفعل؟ *</label>
+        <input type="text" id="police_scenario" required class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all">
+      </div>
+      <div class="space-y-2 text-right">
+        <label class="text-xs text-gray-400">كيف ستتعامل مع زميل يخرق قوانين الشرطة داخل المدينة؟ *</label>
+        <input type="text" id="police_colleague" required class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all">
+      </div>
+      <button type="submit" id="policeSubmit" class="w-full bg-purple-600 hover:bg-purple-700 py-4 rounded-xl font-bold text-xl transition-all shadow-lg hover:shadow-purple-500/20">إرسال التقديم</button>
+    </form>
+  </div>
+</section>
+
+<script>
+function showPoliceForm() {
+  document.querySelectorAll(".page-section").forEach(s => s.classList.remove("active"));
+  document.getElementById("police-apply").classList.add("active");
+  window.scrollTo(0,0);
+}
+
+// إرسال Webhook التقديم للشرطة
+document.getElementById("policeForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+  const btn = document.getElementById("policeSubmit");
+  const webhookURL = "https://discord.com/api/webhooks/1473277364002754656/YafrXqpEwPsOsrosArDLdEkAflbEuhpKVbMNAigDZ0gRgNfjcRE1RlVYMr9xSTKJi_4h"; // حط هنا رابط Webhook الخاص بروم الشرطة
+
+  const payload = {
+    username: "Police Application Bot",
+    avatar_url: "https://i.ibb.co/m5pXzYfL/9BC399-C9-31-C3-42-5-E-AEA8-057-BD7-CA618-F.webp",
+    embeds: [{
+      title: "📥 طلب تقديم جديد للشرطة",
+      color: 8140797,
+      fields: [
+        { name: "Discord ID", value: document.getElementById("police_discord_id").value, inline: false },
+        { name: "الاسم الكامل", value: document.getElementById("police_name").value, inline: false },
+        { name: "الخبرة في الحياة الواقعية", value: document.getElementById("police_experience").value, inline: false },
+        { name: "أهم 3 صفات لضابط الشرطة", value: document.getElementById("police_traits").value, inline: false },
+        { name: "كيف تتصرف عند رؤية مخالف للقانون", value: document.getElementById("police_scenario").value, inline: false },
+        { name: "كيف تتعامل مع زميل مخالف", value: document.getElementById("police_colleague").value, inline: false }
+      ],
+      timestamp: new Date()
+    }]
+  };
+
+  btn.innerText = "جاري الإرسال...";
+  btn.disabled = true;
+
+  try {
+    const response = await fetch(webhookURL, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    });
+    if(response.ok){
+      alert("✅ تم إرسال التقديم بنجاح! انتظر رد الإدارة في الديسكورد.");
+      document.getElementById("policeForm").reset();
+    } else {
+      alert("❌ فشل الإرسال، تأكد من صحة البيانات.");
+    }
+  } catch(err){
+    alert("❌ حدث خطأ أثناء الاتصال بالسيرفر.");
+  } finally {
+    btn.innerText = "إرسال التقديم";
+    btn.disabled = false;
+  }
+});
+</script>
+
+    <section id="apply" class="page-section pt-32 flex-col items-center px-4">
+      <div
+        class="card-dark w-full max-w-2xl p-8 rounded-3xl shadow-2xl mb-20 border-t-4 border-purple-600"
+      >
+        <h2 class="text-3xl font-bold mb-2 text-center text-purple-400">
+           التفعيل
+        </h2>
+        <p class="text-center text-gray-500 mb-8 text-sm">
+          تأكد من صحة البيانات قبل الإرسال
+        </p>
+        <h2 class="text-3xl font-bold mb-2 text-center text-purple-400">
+الجزء الأول: معلومات الشخصية
+        </h2>
+        <form id="applyForm" class="space-y-6">
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">اكتب ايدي حسابك (ID) ديسكورد؟ *</label>
+            <input
+              type="text"
+              id="discord_id"
+              placeholder="مثال: 123456789"
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">اكتب يوزرك روبلوكس؟ *</label>
+            <input
+              type="text"
+              id="roblox_user"
+              placeholder="مثال: Player_Name"
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all text-left"
+              dir="ltr"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">شرفنا باسمك وعمرك الحقيقيين؟ *</label>
+            <input
+              type="text"
+              id="name_age"
+              placeholder="مثال: أحمد - 18 سنة"
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">اسم الشخصية الأول والأخير وتاريخ ميلادها والمنشئ واللغة الخاصه بالشخصية؟ *</label>
+            <input
+              type="text"
+              id="character_info"
+              placeholder="مثال: أحمد - الرشيدي - 2005-01-01 - مُنشئ: محمد - اللغة: العربية"
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+           <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">ماهي قصة الشخصية؟ ( لاتقل عن 5 اسطر ولا تزيد عن 10 اسطر ) *</label>
+            <input
+              type="text"
+              id="character_story"
+              placeholder="مثال: قصة الشخصية تبدأ هنا..."
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <p class="text-center text-gray-500 mb-8 text-sm">
+يوجد تعريف لكيفية الكتابة في الديسكورد يرجى مراجعته قبل كتابة القصة.
+        </p>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">ماهي ايجابيات وسلبيات الشخصية من القصة؟ *</label>
+            <input
+              type="text"
+              id="character_pos_neg"
+              placeholder="مثال: ايجابيات: ... سلبيات: ..."
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">هل لديك خبرة سابقة في تقمص الشخصيات؟ اكتب عنها بالتفصيل *</label>
+            <input
+              type="text"
+              id="character_experience"
+              placeholder="مثال: نعم، لدي خبرة في تقمص الشخصيات حيث شاركت في عدة سيرفرات RP على روبلوكس لمدة 3 سنوات..."
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">ماهوا سبب رغبتك في دخول المدينة؟ *</label>
+            <input
+              type="text"
+              id="character_reason"
+              placeholder="مثال: رغبتي في دخول المدينة لأنها تقدم فرصاً جديدة للتفاعل مع المجتمع..."
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <h2 class="text-3xl font-bold mb-2 text-center text-purple-400">
+           الجزء الثاني: كيف ستتصرف شخصيتك؟
+        </h2>
+        <p class="text-center text-gray-500 mb-8 text-sm">
+يرجى ربط تصرفاتك بالمواقف التالية بشخصيتك, علما أن عدم مطابقة تصرفات شخصيتك للبيانات المذكوره في الجزء الاول يقلل فرص قبولك
+        </p>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">انت الان تحمل سلاح ناري توجهت لتبحث عن رهينة لتقوم بسطو مسلح على أحد المتاجر اكتشفت ان الشخص الذي اختطفته شخص ذو سلطة اجرامية في المدينة ماذا ستفعل في هذا الموقف؟ *</label>
+            <input
+              type="text"
+              id="character_hostage_scenario"
+              placeholder=""
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">بعد توجهك الى احدى الاحياء الخطيرة في المدينة وجدت سيارة مركونة في أحد الازقة وداخلها شحنة قد تكون مواد مخدرة ماذا ستفعل؟ *</label>
+            <input
+              type="text"
+              id="character_drug_scenario"
+              placeholder=""
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">أنت تقوم بإصلاح سيارتك, قام شخص بسحب سلاحه خلفك وامرك برمي اغراضك وتسليم مفاتيح سيارتك. ماذا ستقول وماذا ستفعل في هذه الحالة؟ *</label>
+            <input
+              type="text"
+              id="character_car_scenario"
+              placeholder=""
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <div class="space-y-2 text-right">
+            <label class="text-xs text-gray-400 mr-2">يوم روتيني لك كسائق اجره اتصل عليك شخصين, الاول يحتاج توصيله من العمل الى منزله في احد الاحياء الفارهه بمبلغ 13$, اما الثاني يحتاج توصيله من ساندي شور الى احد الاحياء المشبوهة جنوب المدينة. ماذا ستختار ولماذا؟ *</label>
+            <input
+              type="text"
+              id="character_delivery_scenario"
+              placeholder=""
+              required
+              class="w-full bg-black/50 border border-gray-700 p-4 rounded-xl outline-none focus:border-purple-500 transition-all"
+            />
+          </div>
+          <button
+            type="submit"
+            id="submitBtn"
+            class="w-full bg-purple-600 hover:bg-purple-700 py-4 rounded-xl font-bold text-xl transition-all shadow-lg hover:shadow-purple-500/20"
+          >
+            إرسال التفعيل
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <script>
+      function showPage(pageId, btn) {
+        document
+          .querySelectorAll(".page-section")
+          .forEach((s) => s.classList.remove("active"));
+        document.getElementById(pageId).classList.add("active");
+        document
+          .querySelectorAll(".nav-btn")
+          .forEach((b) => b.classList.remove("active-tab"));
+        if (btn) btn.classList.add("active-tab");
+        window.scrollTo(0, 0);
+      }
+
+      function toggleRule(header) {
+        const item = header.parentElement;
+        const isOpen = item.classList.contains("open");
+        document
+          .querySelectorAll(".rule-item")
+          .forEach((i) => i.classList.remove("open"));
+        if (!isOpen) item.classList.add("open");
+      }
+
+      // إعدادات الويب هوك
+      document
+        .getElementById("applyForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const btn = document.getElementById("submitBtn");
+          const webhookURL =
+            "https://discord.com/api/webhooks/1472543897514147854/XPnFDF81wJkNHmkHLd-K78zAkbrJPf7DDmoqK7w3bNacvAo1gGrKTmxNSRIMb7VM8m2K";
+
+          const discord_id = document.getElementById("discord_id").value;
+          const roblox_user = document.getElementById("roblox_user").value;
+          const name_age = document.getElementById("name_age").value;
+          const character_info = document.getElementById("character_info").value;
+          const character_story = document.getElementById("character_story").value;
+          const character_pos_neg = document.getElementById("character_pos_neg").value;
+          const character_experience = document.getElementById("character_experience").value;
+          const character_reason = document.getElementById("character_reason").value;
+          const character_hostage_scenario = document.getElementById("character_hostage_scenario").value;
+          const character_drug_scenario = document.getElementById("character_drug_scenario").value;
+          const character_car_scenario = document.getElementById("character_car_scenario").value;
+          const character_delivery_scenario = document.getElementById("character_delivery_scenario").value;
+          
+          btn.innerText = "جاري الإرسال...";
+          btn.disabled = true;
+
+          const payload = {
+            username: "Respect Bot",
+            avatar_url:
+              "https://i.ibb.co/m5pXzYfL/9BC399-C9-31-C3-42-5-E-AEA8-057-BD7-CA618-F.webp",
+            embeds: [
+              {
+                title: "📥 طلب تفعيل جديد",
+                description:
+                  "وصلت استمارة تفعيل جديدة من الموقع الرسمي لسيرفر Respect",
+                color: 8140797,
+                thumbnail: {
+                  url: "https://i.ibb.co/m5pXzYfL/9BC399-C9-31-C3-42-5-E-AEA8-057-BD7-CA618-F.webp",
+                },
+                fields: [
+                  {
+                    name: "شرفنا باسمك وعمرك الحقيقيين؟ *",
+                    value: `\`\`\`${name_age}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "اكتب يوزرك روبلوكس؟ *",
+                    value: `\`\`\`${roblox_user}\`\`\``,
+                    inline: true,
+                  },
+                  {
+                    name: "اكتب ايدي حسابك (ID) ديسكورد؟ *",
+                    value: `\`\`\`${discord_id}\`\`\``,
+                    inline: true,
+                  },
+                  {
+                    name: "**معلومات الشخصية**",
+                    value: `\`\`\`${character_info}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "**قصة الشخصية**",
+                    value: `\`\`\`${character_story}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "ماهي ايجابيات وسلبيات الشخصية من القصة؟ ",
+                    value: `\`\`\`${character_pos_neg}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "هل لديك خبرة سابقة في تقمص الشخصيات؟ اكتب عنها بالتفصيل *",
+                    value: `\`\`\`${character_experience}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "ماهوا سبب رغبتك في دخول المدينة؟ *",
+                    value: `\`\`\`${character_reason}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "انت الان تحمل سلاح ناري توجهت لتبحث عن رهينة لتقوم بسطو مسلح على أحد المتاجر اكتشفت ان الشخص الذي اختطفته شخص ذو سلطة اجرامية في المدينة ماذا ستفعل في هذا الموقف؟ *",
+                    value: `\`\`\`${character_hostage_scenario}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "بعد توجهك الى احدى الاحياء الخطيرة في المدينة وجدت سيارة مركونة في أحد الازقة وداخلها شحنة قد تكون مواد مخدرة ماذا ستفعل؟ *",
+                    value: `\`\`\`${character_drug_scenario}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "أنت تقوم بإصلاح سيارتك, قام شخص بسحب سلاحه خلفك وامرك برمي اغراضك وتسليم مفاتيح سيارتك. ماذا ستقول وماذا ستفعل في هذه الحالة؟ *",
+                    value: `\`\`\`${character_car_scenario}\`\`\``,
+                    inline: false,
+                  },
+                  {
+                    name: "ايوم روتيني لك كسائق اجره اتصل عليك شخصين, الاول يحتاج توصيله من العمل الى منزله في احد الاحياء الفارهه بمبلغ 13$, اما الثاني يحتاج توصيله من ساندي شور الى احد الاحياء المشبوهة جنوب المدينة. ماذا ستختار ولماذا؟ *",
+                    value: `\`\`\`${character_delivery_scenario}\`\`\``,
+                    inline: false,
+                  },
+                ],
+                footer: {
+                  text: "نظام تفعيل Respect Server",
+                  icon_url:
+                    "https://i.ibb.co/m5pXzYfL/9BC399-C9-31-C3-42-5-E-AEA8-057-BD7-CA618-F.webp",
+                },
+                timestamp: new Date(),
+              },
+            ],
+          };
+
+          try {
+            const response = await fetch(webhookURL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+              alert(
+                "✅ تم إرسال طلب التفعيل بنجاح! يرجى انتظار رد الإدارة في الديسكورد."
+              );
+              document.getElementById("applyForm").reset();
+            } else {
+              alert("❌ فشل الإرسال، تأكد من صحة البيانات أو تواصل مع الدعم.");
+            }
+          } catch (error) {
+            alert("❌ حدث خطأ في الاتصال بالسيرفر.");
+          } finally {
+            btn.innerText = "إرسال التفعيل";
+            btn.disabled = false;
+          }
+        });
+    </script>
+  </body>
+</html>
